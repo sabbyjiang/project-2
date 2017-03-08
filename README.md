@@ -4,7 +4,7 @@
 Recipe search for healthier living
 
 ## API: 
-(Edamam Recipe API)[https://developer.edamam.com/edamam-docs-recipe-api]
+[Edamam Recipe API](https://developer.edamam.com/edamam-docs-recipe-api)
 
 ## Overall:
 The app is designed so that a user may be able to better search recipes, save dietary preferences so that recipes only within those parameters show up, and save recipes for future use. They should also be able to export them.
