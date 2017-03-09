@@ -25,7 +25,7 @@ recipes.findByDiet = (dietPref) => {
 
     const conditions = statement.join(' AND ');
 
-    const query = 'SELECT * FROM recipes WHERE ' + conditions + 'ORDER BY name';
+    const query = 'SELECT * FROM recipes WHERE ' + conditions + ' ORDER BY name';
 
     return db.any(query);
 };

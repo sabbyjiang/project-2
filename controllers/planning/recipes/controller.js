@@ -24,12 +24,13 @@ controller.findByDiet = (req,res) => {
     const choices = ['vegetarian', 'vegan', 'gluten_free', 'dairy_free', 'ketogenic'];
     const dietPref = {};
     choices.forEach(choice => {
-        dietPref[choice] = req.body[choice];
+        dietPref[choice] = (req.body[choice] == 'TRUE');
     });
 
     recipes.findByDiet(dietPref)
         .then(data => {
-            res.render('recipes/bydiet', {recipes: data})
+            // res.render('recipes/bydiet', {recipes: data})
+            res.json(data);
         })
         .catch(err => console.log('Error: findByDiet:', err));
 }
