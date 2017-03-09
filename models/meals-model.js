@@ -1,4 +1,4 @@
-var db = pgp(process.env.DATABASE_URL || 'postgres://sabrina@localhost:5432/meal-planning');
+const db = require('../config/database');
 
 const meals = {};
 
@@ -42,4 +42,4 @@ meals.delete = (id) => {
     );
 }
 
-module.exports = db;
+module.exports = meals;

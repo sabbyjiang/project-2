@@ -15,4 +15,6 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
+app.use('/', require('./router'));
+
 app.listen(PORT, () => console.log('Server is listening on port', PORT));
