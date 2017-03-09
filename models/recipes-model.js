@@ -18,9 +18,9 @@ recipes.findByDiet = (dietPref) => {
     let statement = [];
 
     Object.keys(dietPref).forEach(key => {
-    if(dietPref[key]){
-        statement.push('' + key + '=TRUE');
-    }
+        if(dietPref[key]){
+            statement.push('' + key + '=TRUE');
+        }
     });
 
     const conditions = statement.join(' AND ');

@@ -1,5 +1,4 @@
-DROP TABLE IF EXISTS meals;
-DROP TABLE IF EXISTS recipes;
+DROP TABLE IF EXISTS recipes CASCADE;
 
 CREATE TABLE recipes(
     id SERIAL PRIMARY KEY,
@@ -11,7 +10,7 @@ CREATE TABLE recipes(
     dairy_free BOOLEAN NOT NULL,
     ketogenic BOOLEAN NOT NULL,
     healthy BOOLEAN NOT NULL,
-    url BOOLEAN NOT NULL
+    url VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE meals(
@@ -25,9 +24,13 @@ CREATE TABLE meals(
 
 CREATE TABLE pairing(
     id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
     recipe1 INT REFERENCES recipes(id) NOT NULL,
     recipe2 INT REFERENCES recipes(id) NOT NULL,
     recipe3 INT REFERENCES recipes(id),
     recipe4 INT REFERENCES recipes(id),
     recipe5 INT REFERENCES recipes(id)
-)
+);
+
+COPY recipes(name, image, vegetarian, vegan, gluten_free, dairy_free, ketogenic, healthy, url) FROM '/Users/Sabrina/code/wdi/projects/project-2/db/recipe_seeds.csv'
+    DELIMITER ',' CSV;
