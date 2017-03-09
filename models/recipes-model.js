@@ -25,11 +25,21 @@ recipes.findByDiet = (dietPref) => {
 
     const conditions = statement.join(' AND ');
 
-    const query = 'SELECT * FROM recipes WHERE ' + conditions;
+    const query = 'SELECT * FROM recipes WHERE ' + conditions + 'ORDER BY name';
 
     return db.any(query);
 }
 
+recipes.create = (recipeObj) => {
+    return db.one(
+        'INSERT INTO recipes(name, image, vegetarian, vegan, gluten_free, dairy_free, ketogenic, healthy, url) VALUES($[name], $[image], $[vegetarian], $[vegan], $[glutenFree], $[dairyFree], $[ketogenic], $[healthy], $[url]) returning id', recipeObj
+    );
+}
 
+recipes.delete = (id) => {
+    return db.none(
+        'DELETE FROM recipes WHERE id=$1', [id]
+    );
+}
 
 module.exports = db;
