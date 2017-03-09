@@ -29,8 +29,7 @@ controller.findByDiet = (req,res) => {
 
     recipes.findByDiet(dietPref)
         .then(data => {
-            // res.render('recipes/bydiet', {recipes: data})
-            res.json(data);
+            res.render('recipes/bydiet', {recipes: data})
         })
         .catch(err => console.log('Error: findByDiet:', err));
 }
