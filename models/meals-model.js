@@ -25,7 +25,7 @@ meals.findByMeal = (mealPref) => {
 
     const conditions = statement.join(' AND ');
 
-    const query = 'SELECT * FROM meals WHERE ' + conditions + 'ORDER BY dish';
+    const query = 'SELECT * FROM meals WHERE ' + conditions + ' ORDER BY dish';
 
     return db.any(query);
 }
