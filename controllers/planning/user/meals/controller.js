@@ -1,11 +1,11 @@
-const meals = require('../../../models/meals-model');
+const meals = require('../../../../models/meals-model');
 
 const controller = {};
 
 controller.findAll = (req,res) => {
     meals.findAll()
         .then(data => {
-            res.render('meals/all', {meals: data});
+            res.render('user/meals/all', {meals: data});
         })
         .catch(err => console.log('Error: Find All: ', err));
 };
@@ -19,7 +19,7 @@ controller.findByMeal = (req,res) => {
 
     meals.findByMeal(dietPref)
         .then(data => {
-            res.render('meals/bymeal', {meals: data})
+            res.render('user/meals/bymeal', {meals: data})
         })
         .catch(err => console.log('Error: findByMeal:', err));
 }
@@ -27,7 +27,7 @@ controller.findByMeal = (req,res) => {
 controller.findByDish = (req, res) => {
     meals.findByDish(req.body.dish)
         .then(data => {
-            res.render('meals/dish', {dish: data})
+            res.render('user/meals/dish', {dish: data})
         })
         .catch(err => console.log('Error: findByDish:', err));
 }
