@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+</head>
+<body>
+        <h1>{{title}}</h1>
+        <p>From <a href="{{sourceUrl}}">{{sourceName}}</a></p>
+        <p>Servings: {{servings}}</p>
+        <p>Ready In: {{readyInMinutes}} min</p>
+        <img src="{{image}}" />
+        <div class="ingredients">
+            <ul>
+                {{#extendedIngredients}}
+                <li>{{originalString}}</li>
+                {{/extendedIngredients}}
+            </ul>
+        </div>
+        {{#analyzedInstructions}}
+            <ol>
+                {{#steps}}
+                <li>{{step}}</li>
+                {{/steps}}
+            </ol>
+        {{/analyzedInstructions}}
+        <form id="save">
+            <label for="dish">What Type of Dish</label>
+            <select name="dish">
+                <option value="appetizer">Appetizer</option>
+                <option value="entree">Entre&eacute;</option>
+                <option value="side">Side</option>
+                <option value="dessert">Dessert</option>
+                <option value="drink">Drink</option>
+            </select>
+            <label for="breakfast">Breakfast</label>
+            <input type="checkbox" name="breakfast">
+            <label for="lunch">Lunch</label>
+            <input type="checkbox" name="lunch">
+            <label for="dinner">Dinner</label>
+            <input type="checkbox" name="dinner">
+
+            <input name="vegetarian" value={{vegetarian}} hidden>
+            <input name="vegan" value={{vegan}} hidden>
+            <input name="dairyFree" value={{dairyFree}} hidden>
+            <input name="ketogenic" value={{ketogenic}} hidden>
+            <input name="healthy" value={{veryHealthy}} hidden>
+            <button type="submit">Save?</button>
+        </form>
+</body>
+</html>

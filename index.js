@@ -3,6 +3,7 @@ const   express = require('express'),
         mustache = require('mustache-express'),
         pgp = require('pg-promise'),
         bodyParser = require('body-parser'),
+        rp = require('request-promise'),
         PORT = process.env.PORT || 3000;
 
 // express set up
