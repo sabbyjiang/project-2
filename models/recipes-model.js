@@ -32,7 +32,7 @@ recipes.findByDiet = (dietPref) => {
 
 recipes.create = (recipeObj) => {
     return db.one(
-        'INSERT INTO recipes(name, image, vegetarian, vegan, gluten_free, dairy_free, ketogenic, healthy, url) VALUES($[name], $[image], $[vegetarian], $[vegan], $[glutenFree], $[dairyFree], $[ketogenic], $[healthy], $[url]) returning id', recipeObj
+        'INSERT INTO recipes(name, image, vegetarian, vegan, gluten_free, dairy_free, ketogenic, healthy, url) VALUES($[name], $[image], $[vegetarian], $[vegan], $[gluten_free], $[dairy_free], $[ketogenic], $[healthy], $[url]) returning id', recipeObj
     );
 };
 
