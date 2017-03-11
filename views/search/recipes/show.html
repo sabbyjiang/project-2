@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/jquery.js"></script>
+    <script src="/script.js"></script>
+    <link rel="stylesheet" href="/style.css">
     <title>{{title}}</title>
 </head>
 <body>
         <h1>{{title}}</h1>
-        <p>From <a href="{{sourceUrl}}">{{sourceName}}</a></p>
+        <p>From <a class="sourceURL" href="{{sourceUrl}}">{{sourceName}}</a></p>
         <p>Servings: {{servings}}</p>
         <p>Ready In: {{readyInMinutes}} min</p>
         <img src="{{image}}" />
@@ -28,7 +31,8 @@
         {{/analyzedInstructions}}
         <form id="save">
             <label for="dish">What Type of Dish</label>
-            <select name="dish">
+            <select name="dish" class="dish">
+                <option value="" disabled selected>Dish Type</option>
                 <option value="appetizer">Appetizer</option>
                 <option value="entree">Entre&eacute;</option>
                 <option value="side">Side</option>
@@ -44,6 +48,7 @@
 
             <input name="vegetarian" id="vegetarian" value={{vegetarian}} hidden>
             <input name="vegan" id="vegan" value={{vegan}} hidden>
+            <input name="glutenFree" id="glutenFree" value={{glutenFree}} hidden>
             <input name="dairyFree" id="dairyFree" value={{dairyFree}} hidden>
             <input name="ketogenic" id="ketogenic" value={{ketogenic}} hidden>
             <input name="healthy" id="healthy" value={{veryHealthy}} hidden>

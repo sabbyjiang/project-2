@@ -51,15 +51,9 @@ controller.byName = (req,res) => {
 }
 
 controller.byIngredients = (req, res) => {
-    // Sets the maximum number of ingredients to search
-    const maxIngredients = 5;
-    let ingredientsArray = [];
-    for(let i = 1 ; i <= maxIngredients ; i++){
-        if(req.body["ingredient"+i]){
-            // Pushes all the ingredients into an array;
-            ingredientsArray.push(req.body["ingredient"+i]);
-        }
-    }
+    console.log(req.query);
+
+    let ingredientsArray = req.query.ingredients.split(', ');
 
     let ingredientString = ingredientsArray.join('%2C');
     const url = SPOONACULAR_URL + "recipes/findByIngredients?ingredients=" + ingredientString + '&number=5&ranking=1';

@@ -39,33 +39,13 @@
         <button type="submit" class="submit-name">Submit</button>
     </form>
 
-    <form method="GET" action="/planning/search/by-ingredients" class="search-name">
+    <form method="GET" action="/planning/search/by-ingredients" class="search-ingredients">
         <div class="search-ind">
-            <label for="cuisine">Cuisine</label>
-            <input id="cuisine" name="cuisine" placeholder="Cuisine">
+            <label for="ingredients">Ingredients</label>
+            <input id="ingredients" name="ingredients" placeholder="Ingredients">
         </div>
-        <div class="search-ind">
-            <label for="diet">Diet</label>
-            <select id="diet" name="diet">
-                <option disabled selected value>Select a Diet Option</option>
-                <option value="vegan">Vegan</option>
-                <option value="vegetarian">Vegetarian</option>
-                <option value="">Neither</option>
-            </select>
-        </div>
-        <div class="search-ind">
-            <label for="exclude-ingredients">Excluding</label>
-            <input id="exclude-ingredients" name="excludeIngredients" placeholder="e.g. butter">
-        </div>
-        <div class="search-ind">
-            <label for="intolerances">Dietary Intolerances</label>
-            <input id="intolerances" name="intolerances" placeholder="e.g. gluten">
-        </div>
-        <div class="search-ind required">
-            <label for="query">Keywords</label>
-            <input id="query" name="query" placeholder="keywords" required>
-        </div>
-        <button type="submit" class="submit-name">Submit</button>
+        
+        <button type="submit" class="submit-ingredients">Submit</button>
     </form>
 
     <div class="results-recipes">

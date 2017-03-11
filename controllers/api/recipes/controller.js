@@ -1,4 +1,5 @@
 const recipes = require('../../../models/recipes-model');
+const meals = require('../../../models/meals-model');
 
 const controller = {};
 
@@ -35,19 +36,28 @@ controller.findByDiet = (req,res) => {
 }
 
 controller.create = (req, res) => {
-    const inputFields = ['name', 'image', 'vegetarian', 'vegan', 'gluten_free', 'dairy_free', 'ketogenic', 'healthy', 'url'];
+    const inputFields = ['name', 'image', 'vegetarian', 'vegan', 'glutenFree', 'dairyFree', 'ketogenic', 'healthy', 'url'];
     const newRecipe = {};
     inputFields.forEach(field => {
-        if(req.body[field] == 'TRUE' || req.body[field] == 'FALSE'){
-            newRecipe[field] = (req.body[field] == 'TRUE');
-        } else {
-            newRecipe[field] = req.body[field];
-        }
+        newRecipe[field] = req.body[field];
     });
 
+    const mealObj = {
+        dish: req.body.dish,
+        breakfast: req.body.breakfast,
+        lunch: req.body.lunch,
+        dinner: req.body.dinner,
+    };
+
     recipes.create(newRecipe)
-        .then(data => {
-            res.json(data);
+        .then(recipeData => {
+            mealObj['recipe_id'] = recipeData.id;
+            console.log(mealObj);
+            meals.create(mealObj)
+                .then(mealData => {
+                    res.json(recipeData);
+                })
+                .catch(err => {'Error posting new meal:', err});
         })
         .catch(err => console.log('Error: new recipe:', err));
 }
