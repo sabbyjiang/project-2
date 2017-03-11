@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Recipe Search Results</title>
+    <title>Recipes Search Results</title>
 </head>
 <body>
     <div class="results-recipes">
         {{#recipes}}
             <div class="recipe-short">
-                <img class="recipe-short-image" src="{{image}}" />
+                <img class="recipe-short-image" src="https://spoonacular.com/recipeImages/{{image}}" />
                 <h3 class="recipe-short-title"><a href="/planning/search/recipes/{{id}}">{{title}}</a></h3>
             </div>
         {{/recipes}}
