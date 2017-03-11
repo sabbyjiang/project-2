@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/jquery.js"></script>
+    <script src="/script.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/users" method="POST">
+        <label for="email">Email</label><br>
+        <input id="email" type="text" name="user[email]" placeholder="john.doe@example.com"><br>
+        <label for="password">Password</label><br>
+        <input id="password" type="password" name="user[password]" placeholder="P4ssw0rd1234"><br>
+        <input type="submit" value="Sign Up">
+      </form>
+</body>
+</html>

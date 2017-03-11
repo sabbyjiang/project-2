@@ -20,6 +20,7 @@ CREATE TABLE recipes(
     ketogenic BOOLEAN NOT NULL,
     healthy BOOLEAN NOT NULL,
     url VARCHAR(255) NOT NULL,
+    users_id INT REFERENCES users(id) NOT NULL
 );
 
 CREATE TABLE meals(
@@ -40,9 +41,3 @@ CREATE TABLE pairing(
     recipe4 INT REFERENCES recipes(id),
     recipe5 INT REFERENCES recipes(id)
 );
-
-COPY recipes(name, image, vegetarian, vegan, gluten_free, dairy_free, ketogenic, healthy, url) FROM '/Users/Sabrina/code/wdi/projects/project-2/db/recipe_seeds.csv' DELIMITER ',' CSV;
-
-INSERT INTO meals(breakfast, lunch, dinner, dish, recipe_id) VALUES(FALSE, TRUE, TRUE, 'appetizer', 1);
-INSERT INTO meals(breakfast, lunch, dinner, dish, recipe_id) VALUES(FALSE, TRUE, TRUE, 'entree', 2);
-INSERT INTO meals(breakfast, lunch, dinner, dish, recipe_id) VALUES(TRUE, FALSE, TRUE, 'dessert', 3);

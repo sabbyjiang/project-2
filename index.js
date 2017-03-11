@@ -24,12 +24,12 @@ app.use(session({
         saveUninitialized: true
 }));
 
-app.use (passport.initialize());
+app.use(passport.initialize());
 app.use(passport.session());
 app.use(logger('dev'));
 
 // body-parser setup
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(cookieParser());
@@ -57,22 +57,27 @@ passport.deserializeUser((userObj, done) => {
 passport.use(
         'local-signup',
         new LocalStrategy(
-                {
-                        usernameField: 'user[email]',
-                        passwordField: 'user[password]',
-                        passReqToCallback: true
-                },
-                (req, email, password, done) => {
-                        User.create(req.body.user)
-                        .then((user) => {
-                                return done(null, user);
-                        })
-                        .catch((err) => {
-                                console.log('Error: ', err);
-                                return done(null, false);
-                        });
-                }
-        )
+    {
+      // these are the names of the fields for email and password in
+      // the login form we'll be serving (see the view)
+      usernameField: 'user[email]',
+      passwordField: 'user[password]',
+      // Setting to true means we are going to further process
+      passReqToCallback: true
+    },
+    // If they have done everything properly, call on User.create to create the new login
+    (req, email, password, done) => {
+      User
+	.create(req.body.user)
+	.then((user) => {
+    // Signal to passport that this is success
+	  return done(null, user);
+	})
+	.catch((err) => {
+	  console.log('ERROR:', err);
+	  return done(null, false);
+	});
+    })
 );
 
 // Checks login creditials
