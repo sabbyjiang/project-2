@@ -3,7 +3,7 @@ const meals = require('../../../models/meals-model');
 const controller = {};
 
 controller.findAll = (req, res) => {
-    meals.findAll()
+    meals.findAll(req.user.id)
         .then(data => res.json(data))
         .catch(err => console.log('ERROR: findAll', err));
 };
@@ -16,13 +16,13 @@ controller.findByMeal = (req, res) => {
         mealPref[meal] = (req.body[meal] == 'TRUE');
     });
 
-    meals.findByMeal(mealPref)
+    meals.findByMeal(mealPref, req.user.id)
         .then(data => res.json(data))
         .catch(err => console.log('ERROR: findByMeal', err));
 };
 
 controller.findByDish = (req, res) => {
-    meals.findByDish(req.body.choices)
+    meals.findByDish(req.body.choices, req.user.id)
         .then(data => res.json(data))
         .catch(err => console.log('ERROR: findByDish', err));
 };
@@ -39,7 +39,7 @@ controller.create = (req, res) => {
         }
     });
 
-    meals.create(newMeal)
+    meals.create(newMeal, req.user.id)
         .then(data => res.json(data))
         .catch(err => console.log('ERROR: create:', err));
 };

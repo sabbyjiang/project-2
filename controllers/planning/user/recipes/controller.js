@@ -3,7 +3,7 @@ const recipes = require('../../../../models/recipes-model');
 const controller = {};
 
 controller.findAll = (req,res) => {
-    recipes.findAll()
+    recipes.findAll(req.user.id)
         .then(data => {
             res.render('user/recipes/all', {recipes: data});
         })
@@ -13,7 +13,7 @@ controller.findAll = (req,res) => {
 controller.findOne = (req, res) => {
     const id = req.params.id;
 
-    recipes.findOne(id)
+    recipes.findOne(id, req.user.id)
         .then(data => {
             res.render('user/recipes/show', {recipe: data})
         })
@@ -27,7 +27,7 @@ controller.findByDiet = (req,res) => {
         dietPref[choice] = (req.body[choice] == 'TRUE');
     });
 
-    recipes.findByDiet(dietPref)
+    recipes.findByDiet(dietPref, req.user.id)
         .then(data => {
             res.render('user/recipes/bydiet', {recipes: data})
         })

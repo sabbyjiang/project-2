@@ -2,19 +2,19 @@ const db = require('../config/database');
 
 const recipes = {};
 
-recipes.findAll = () => {
+recipes.findAll = (user_id) => {
     return db.manyOrNone(
-        'SELECT * FROM recipes'
+        'SELECT * FROM recipes WHERE users_id=$1', [user_id]
     );
 };
 
-recipes.findOne = (id) => {
+recipes.findOne = (id, user_id) => {
     return db.one(
-        'SELECT * FROM recipes WHERE id=$1', [id]
+        'SELECT * FROM recipes WHERE id=$1 AND users_id=$2', [id, user_id]
     );
 };
 
-recipes.findByDiet = (dietPref) => {
+recipes.findByDiet = (dietPref, user_id) => {
     let statement = [];
 
     Object.keys(dietPref).forEach(key => {
@@ -25,14 +25,15 @@ recipes.findByDiet = (dietPref) => {
 
     const conditions = statement.join(' AND ');
 
-    const query = 'SELECT * FROM recipes WHERE ' + conditions + ' ORDER BY name';
+    const query = 'SELECT * FROM recipes WHERE ' + conditions + ' AND users_id=$1 ORDER BY name';
 
-    return db.any(query);
+    return db.any(query, [user_id]);
 };
 
-recipes.create = (recipeObj) => {
+recipes.create = (recipeObj, user_id) => {
+    recipeObj['user_id'] = user_id;
     return db.one(
-        'INSERT INTO recipes(name, image, vegetarian, vegan, gluten_free, dairy_free, ketogenic, healthy, url) VALUES($[name], $[image], $[vegetarian], $[vegan], $[glutenFree], $[dairyFree], $[ketogenic], $[healthy], $[url]) returning id', recipeObj
+        'INSERT INTO recipes(name, image, vegetarian, vegan, gluten_free, dairy_free, ketogenic, healthy, url, users_id) VALUES($[name], $[image], $[vegetarian], $[vegan], $[glutenFree], $[dairyFree], $[ketogenic], $[healthy], $[url], $[user_id]) returning id', recipeObj
     );
 };
 

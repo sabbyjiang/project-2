@@ -29,7 +29,8 @@ CREATE TABLE meals(
     lunch BOOLEAN NOT NULL,
     dinner BOOLEAN NOT NULL,
     dish VARCHAR(255) NOT NULL,
-    recipe_id INT REFERENCES recipes(id) NOT NULL
+    recipe_id INT REFERENCES recipes(id) NOT NULL,
+    users_id INT REFERENCES users(id) NOT NULL
 );
 
 CREATE TABLE pairing(
@@ -39,5 +40,6 @@ CREATE TABLE pairing(
     recipe2 INT REFERENCES recipes(id) NOT NULL,
     recipe3 INT REFERENCES recipes(id),
     recipe4 INT REFERENCES recipes(id),
-    recipe5 INT REFERENCES recipes(id)
+    recipe5 INT REFERENCES recipes(id),
+    users_id INT REFERENCES users(id) NOT NULL
 );

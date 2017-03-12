@@ -4,7 +4,7 @@ const meals = require('../../../models/meals-model');
 const controller = {};
 
 controller.findAll = (req,res) => {
-    recipes.findAll()
+    recipes.findAll(req.user.id)
         .then(data => {
             res.json(data);
         })
@@ -14,7 +14,7 @@ controller.findAll = (req,res) => {
 controller.findOne = (req, res) => {
     const id = req.params.id;
 
-    recipes.findOne(id)
+    recipes.findOne(id, req.user.id)
         .then(data => {
             res.json(data);
         })
@@ -28,7 +28,7 @@ controller.findByDiet = (req,res) => {
         dietPref[choice] = (req.body[choice] == 'TRUE');
     });
 
-    recipes.findByDiet(dietPref)
+    recipes.findByDiet(dietPref, req.user.id)
         .then(data => {
             res.json(data);
         })
@@ -49,7 +49,7 @@ controller.create = (req, res) => {
         dinner: req.body.dinner,
     };
 
-    recipes.create(newRecipe)
+    recipes.create(newRecipe, req.user.id)
         .then(recipeData => {
             mealObj['recipe_id'] = recipeData.id;
             console.log(mealObj);
