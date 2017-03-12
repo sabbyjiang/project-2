@@ -23,7 +23,7 @@ router.get('/new', (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.logout();
-    res.redirect('/');
+    res.redirect('/users/login');
 });
 
 router.get('/login', (req, res) => {
