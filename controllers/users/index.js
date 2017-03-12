@@ -9,7 +9,7 @@ router.post('/',
         'local-signup',
         {
             failureRedirect: '/users/new',
-            successRedirect: '/planning'
+            successRedirect: '/'
         }
     )
 );
@@ -20,17 +20,13 @@ router.get('/new', (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.logout();
-    res.redirect('/users/login');
-});
-
-router.get('/login', (req, res) => {
-    res.render('users/login');
+    res.redirect('/');
 });
 
 router.post('/login', passport.authenticate(
     'local-login', 
     {
-        failureRedirect: '/users/login',
+        failureRedirect: '/',
         successRedirect: '/planning'
     }
 ));

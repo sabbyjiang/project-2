@@ -5,9 +5,13 @@ const controller = {};
 controller.findAll = (req,res) => {
     recipes.findAll(req.user.id)
         .then(data => {
+            console.log(data);
             res.render('user/recipes/all', {recipes: data});
         })
-        .catch(err => console.log('Error: Find All: ', err));
+        .catch(err => {
+            console.log('Error: Find All: ', err)
+            res.render('user/recipes/all', {none: 'Oops! seems that you have no saved recipes yet!'});
+        });
 };
 
 controller.findOne = (req, res) => {
@@ -15,9 +19,12 @@ controller.findOne = (req, res) => {
 
     recipes.findOne(id, req.user.id)
         .then(data => {
-            res.render('user/recipes/show', {recipe: data})
+            res.render('user/recipes/show', {recipe: data}); 
         })
-        .catch(err => console.log('Error: FindOne:', err));
+        .catch(err => {
+            console.log('Error: FindOne:', err)
+            res.render('user/recipes/show', {none: 'Oops! That recipe doesn\'t seem to exist'});
+        });
 };
 
 controller.findByDiet = (req,res) => {
@@ -29,9 +36,12 @@ controller.findByDiet = (req,res) => {
 
     recipes.findByDiet(dietPref, req.user.id)
         .then(data => {
-            res.render('user/recipes/bydiet', {recipes: data})
+                res.render('user/recipes/bydiet', {recipes: data});
         })
-        .catch(err => console.log('Error: findByDiet:', err));
+        .catch(err => {
+            console.log('Error: findByDiet:', err);
+            res.render('user/recipes/bydiet', {none: 'Oops! You don\'t have anything saved with those options'});
+        });
 }
 
 module.exports = controller;

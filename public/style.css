@@ -1,5 +1,5 @@
 /* Sets General Styles*/
-html, body {
+html, body, input {
     font-family: 'Raleway', sans-serif;
     background-color: rgba(233,243,246,1);
     margin: 0;
@@ -39,6 +39,11 @@ a:link {
 
 a:hover{
     color: rgba(243,250,253,1);
+}
+
+input {
+    background-color: rgba(243,250,253,1);
+    text-align: center;
 }
 
 /* Palette URL: http://paletton.com/#uid=13p0u0k4uV+0lJP1l+h8lO7cMCa */
@@ -102,6 +107,7 @@ header {
 }
 
 .submit {
+    padding: 3px 5px;
     background-color: rgba(243,250,253,1);
     border-radius: 3px;
     border: 1px solid rgba(111,163,181,1);
@@ -122,4 +128,25 @@ header {
 .sign-up {
     padding-top: 5px;
     align-self: flex-end;
+}
+
+.sign-up-page {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.sign-up-form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    justify-content: space-around;
+    text-align: center;
+    width: 30vw;
+}
+
+.dashed-border {
+    background-color: rgba(243,250,253,1);
+    border: 3px dashed rgba(162,203,216,1);
 }

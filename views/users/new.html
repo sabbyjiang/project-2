@@ -11,12 +11,21 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/users" method="POST">
-        <label for="email">Email</label><br>
-        <input id="email" type="text" name="user[email]" placeholder="john.doe@example.com"><br>
-        <label for="password">Password</label><br>
-        <input id="password" type="password" name="user[password]" placeholder="P4ssw0rd1234"><br>
-        <input type="submit" value="Sign Up">
-      </form>
+    <div class="container sign-up-page">
+        <div class="sign-up-container dashed-border">
+            <form class="sign-up-form" action="/users" method="POST">
+                <h1>New Account</h1>
+                <div class="search-ind">
+                    <label for="email">Email</label><br>
+                    <input id="email" type="text" name="user[email]" placeholder="email">
+                </div>
+                <div class="search-ind">
+                    <label for="password">Password</label><br>
+                    <input id="password" type="password" name="user[password]" placeholder="password">
+                </div>
+                <input class="submit" type="submit" value="Sign Up">
+            </form>
+        </div>
+    </div>
 </body>
 </html>
