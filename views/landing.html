@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="/jquery.js"></script>
     <script src="/script.js"></script>
+    <link rel="stylesheet" href="/reset.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway|Shadows+Into+Light" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
     <title>Recipe Organizer</title>
@@ -15,5 +16,24 @@
         <header>
             <h1>Your Recipes</h1>
         </header>
+        <main class="welcome">
+            <div class="user-search">
+                <h2 class="recipe-header">Search</h2>
+            </div>
+            <div class="user-recipes">
+                <h2 class="recipe-header">Recently Saved Recipes</h2>
+                <div class="user-recipes-short">
+                    <!--If there are no recipes-->
+                        <p class="error">{{none}}</p>
+                    <!--<p>{{none}}</p>-->
+                    {{#recipes}}
+                        <div class="recipe-card-short" style="background-image: url({{image}})">
+                            <p><a class="recipe-name-short" href="recipes/{{id}}">{{name}}</a></p>
+                        </div>
+                    {{/recipes}}
+                </div>
+            </div>
+        </main>
     </div>
+    
 </body>

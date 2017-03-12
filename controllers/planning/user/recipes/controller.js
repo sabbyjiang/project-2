@@ -10,7 +10,7 @@ controller.findAll = (req,res) => {
         })
         .catch(err => {
             console.log('Error: Find All: ', err)
-            res.render('user/recipes/all', {none: 'Oops! seems that you have no saved recipes yet!'});
+            res.render('user/recipes/all', {none: 'Oops! It seems that you have no saved recipes yet!'});
         });
 };
 

@@ -8,6 +8,12 @@ recipes.findAll = (user_id) => {
     );
 };
 
+recipes.findSome = (user_id) => {
+    return db.manyOrNone(
+        'SELECT * FROM recipes WHERE users_id=$1 ORDER BY recipes.id DESC LIMIT 4', [user_id]
+    );
+};
+
 recipes.findOne = (id, user_id) => {
     return db.one(
         'SELECT * FROM recipes WHERE id=$1 AND users_id=$2', [id, user_id]

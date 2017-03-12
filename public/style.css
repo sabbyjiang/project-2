@@ -8,9 +8,12 @@ html, body, input {
 
 h1, h2, h3 {
     font-family: 'Shadows Into Light', cursive;
+    font-weight: bold;
 }
 
 h1 {
+    font-size: 2em;
+    font-weight: bold;
     color: rgba(111,163,181,1);
     margin: 0;
 }
@@ -18,6 +21,14 @@ h1 {
 h2, h3 {
     color: rgba(162,203,216,1);
     margin: 0;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.17em;
 }
 
 .container {
@@ -44,6 +55,10 @@ a:hover{
 input {
     background-color: rgba(243,250,253,1);
     text-align: center;
+}
+
+.error {
+    color: rgba(202,203,204,1)
 }
 
 /* Palette URL: http://paletton.com/#uid=13p0u0k4uV+0lJP1l+h8lO7cMCa */
@@ -97,6 +112,7 @@ header {
 }
 
 .recipe-header {
+    height: 4.5%;
     padding: 2vh 0;
     text-align: center;
     border-bottom: 3px dashed rgba(162,203,216,1);
@@ -149,4 +165,46 @@ header {
 .dashed-border {
     background-color: rgba(243,250,253,1);
     border: 3px dashed rgba(162,203,216,1);
+}
+
+/*======================================================*/
+/* For Recipe Cards*/
+
+.user-search {
+    border-right: 3px dashed rgba(162,203,216,1);
+    width: 25%;
+    height: 100%;
+}
+
+.user-recipes {
+    width: 75%;
+    height: 100%;
+}
+
+.user-recipes-short {
+    align-items: center; 
+    display: flex;
+    flex-wrap: wrap;
+    height: 90%;
+    justify-content: space-around;
+}
+
+.recipe-card-short {
+    background-position: center;
+    background-size: cover;
+    height: 40%;
+    width: 45%;
+}
+
+.recipe-name-short{
+    color: rgba(243,250,253,1);
+    background: linear-gradient(rgba(111,163,181,1),rgba(111,163,181,0));
+    display: block;
+    height: 30%;
+    margin: 0;
+    padding: 1em 0;
+    position: relative;
+    text-align: center;
+    margin-bottom: -3rem;
+    width: 100%;
 }
