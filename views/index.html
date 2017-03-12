@@ -6,18 +6,45 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="/jquery.js"></script>
     <script src="/script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Shadows+Into+Light" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
     <title>Recipe Organizer</title>
 </head>
 <body>
-    <div class="container">
-        <div class="welcome">
+    <div class="container landing">
+        <header>
             <h1>Welcome to Your Recipe Organizer</h1>
-            <nav class="home-nav">
-                <p class="nav-link"><a href="/planning/search/">Search</a></p>
-                <p class="nav-link"><a href="/planning/user/recipes/all">Saved Recipes</a></p>
-            </nav>
-        </div>
+            <div class="login-links">
+                <form action="/users/login" method="POST">
+                    <label for="email">Email</label>
+                    <input id="email" type="text" name="user[email]" placeholder="email">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="user[password]" placeholder="password">
+                    <input class="submit" type="submit" value="Login">
+                </form>
+                <div class="sign-up">
+                    <a href="/users/new">Sign Up</a>
+                </div>
+            </div>
+        </header>
+        <main class="welcome">
+            <div class="welcome-ingredients">
+                <h2 class="recipe-header">Ingredients</h2>
+                <ul class="welcome-list">
+                    <li>A dash of creativity</li>
+                    <li>A handful of elbow grease</li>
+                    <li>A spoonful of time</li>
+                </ul>
+            </div>
+            <div class="welcome-instructions">
+                <h2 class="recipe-header">Instructions</h2>
+                <ol>
+                    <li>Search the large database of recipes</li>
+                    <li>Save the Recipes</li>
+                    <li>Organize them by meals, dietary preference, or dish type</li>
+                    <li>Show off your creations to your friends!</li>
+                </ol>
+        </main>
     </div>
     
 </body>

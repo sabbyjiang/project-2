@@ -11,10 +11,7 @@ router.post('/',
             failureRedirect: '/users/new',
             successRedirect: '/planning'
         }
-    ), (req, res) => {
-        const user = req.user;
-        console.log(user);
-    }
+    )
 );
 
 router.get('/new', (req, res) => {
