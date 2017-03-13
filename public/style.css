@@ -337,9 +337,11 @@ header {
 /* For Deleting*/
 
 .delete {
-    background-image: url('https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/trash-512.png');
+    background-image: url("https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/trash-512.png");
     background-position: center;
     background-size: cover;
-    width: 5px;
-    height: 5px;
+    cursor: pointer;
+    min-width: 20px;
+    height: 20px;
+    margin-left: 5vw;
 }

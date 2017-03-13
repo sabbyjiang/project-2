@@ -60,6 +60,28 @@ $(document).ready(()=>{
                 console.log('Error:', error);
             }
         })
+    });
+
+    $('.delete').click(e => {
+        $.ajax({
+            method: 'DELETE',
+            url: '/api/meals/by-recipe',
+            success: (response) => {
+                console.log(response);
+                $.ajax({
+                    method: 'DELETE',
+                    url: '/api/recipes/delete/' + response.id,
+                    success: () => {
+                        window.location.replace('/planning/user/recipes/all');
+                    }, error: error => {
+                        console.log('Error 2:', error);
+                    }
+                });
+            }, 
+            error: error => {
+                console.log('Error:', error);
+            }
+        });
     })
 
 

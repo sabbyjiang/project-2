@@ -55,11 +55,12 @@ controller.delete = (req, res) => {
 }
 
 controller.deleteByRecipe = (req, res) => {
-    const recipeID = req.cookies.recipe;
+    const recipeID = parseInt(req.cookies.recipe);
     meals.deleteByRecipe(recipeID)
-        .then(res.redirect('/api/recipes/' + recipeID))
+        .then(() => {
+            res.json({id: recipeID});
+        })
         .catch(err => console.log('error: deleteByRecipe', err));
-        
 }
 
 module.exports = controller;

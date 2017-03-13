@@ -58,7 +58,9 @@ controller.create = (req, res) => {
 
 controller.delete = (req, res) => {
     recipes.delete(req.params.id)
-        .then(console.log('yay'))
+        .then(() => {
+            res.json({success: 'success'});
+        })
         .catch(err => console.log('err', err));
 }
 
