@@ -41,6 +41,18 @@ controller.findBySpoonacular = (req, res) => {
         });
 }
 
+controller.edit = (req, res) => {
+    recipes.findOne(req.cookies.recipe, req.user.id)
+        .then(data => {
+            res.cookie('recipe', data.id);
+            console.log(data);
+            res.render('user/recipes/edit', data);
+        })
+        .catch(err => {
+            console.log('Error: FindOne:', err);
+        });
+}
+
 controller.findByDiet = (req,res) => {
     const choices = ['vegetarian', 'vegan', 'gluten_free', 'dairy_free', 'ketogenic', 'healthy'];
     const dietPref = {};

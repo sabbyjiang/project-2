@@ -1,5 +1,4 @@
 const recipes = require('../../../models/recipes-model');
-const meals = require('../../../models/meals-model');
 
 const controller = {};
 
@@ -42,18 +41,28 @@ controller.create = (req, res) => {
         newRecipe[field] = req.body[field];
     });
 
-    // const mealObj = {
-    //     dish: req.body.dish,
-    //     breakfast: req.body.breakfast,
-    //     lunch: req.body.lunch,
-    //     dinner: req.body.dinner,
-    // };
-
     recipes.create(newRecipe, req.user.id)
         .then(recipeData => {
             res.json(recipeData);
         })
         .catch(err => console.log('Error: new recipe:', err));
+}
+
+controller.edit = (req, res) => {
+    const inputFields = ['name', 'image', 'vegetarian', 'vegan', 'glutenFree', 'dairyFree', 'ketogenic', 'healthy', 'url', 'spoonacular_id'];
+    const updateRecipe = {};
+    inputFields.forEach(field => {
+        updateRecipe[field] = req.body[field];
+    });
+    updateRecipe['recipe_id'] = req.cookies.recipe;
+
+    console.log('updateRecipeObj', updateRecipe);
+    
+    recipes.edit(updateRecipe, req.user.id)
+        .then(recipeData => {
+            res.json(recipeData);
+        })
+        .catch(err => console.log('Error: edit recipe', err));
 }
 
 controller.delete = (req, res) => {

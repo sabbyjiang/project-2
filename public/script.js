@@ -14,6 +14,20 @@ $(document).ready(()=>{
         return recipe;
     }
 
+    const editRecipe = () => {
+        const recipe = {};
+        const recipeOptions = ['vegetarian', 'vegan', 'dairyFree', 'glutenFree', 'ketogenic', 'healthy', 'name', 'url', 'image', 'spoonacular_id'];
+        recipeOptions.forEach(option => {
+            if($('#'+option).val() === "true" || $('#'+option).val() === "false"){
+                recipe[option] = ($('#'+option).val() === "true");
+            } else {
+                recipe[option] = $('#'+option).val();
+            } 
+        });
+
+        return recipe;
+    }
+
 
     $('#save').submit(e => {
         e.preventDefault();
@@ -82,6 +96,29 @@ $(document).ready(()=>{
                 console.log('Error:', error);
             }
         });
+    });
+
+    $('.edit').click(e => {
+        window.location.replace('/planning/user/recipes/edit');
+    });
+
+    $('#edit').submit(e => {
+        e.preventDefault();
+
+        const recipeData = editRecipe();
+
+        $.ajax({
+            method: 'PUT',
+            url: '/api/recipes/edit/',
+            data: recipeData,
+            success: recipe => {
+                location.replace('/planning/user/recipes/' + recipe.id);
+            },
+            error: error => {
+                console.log('Error:', error);
+            }
+        })
+
     })
 
 

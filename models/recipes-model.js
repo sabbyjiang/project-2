@@ -43,6 +43,14 @@ recipes.create = (recipeObj, user_id) => {
     );
 };
 
+recipes.edit = (recipeObj, user_id) => {
+    recipeObj['user_id'] = user_id;
+
+    return db.one(
+        'UPDATE recipes SET name = $[name], image = $[image], vegetarian = $[vegetarian], vegan = $[vegan], gluten_free = $[glutenFree], dairy_free = $[dairyFree], ketogenic = $[ketogenic], healthy = $[healthy], url = $[url], spoonacular_id = $[spoonacular_id], users_id = $[user_id] WHERE id = $[recipe_id] returning id', recipeObj
+    );
+}
+
 recipes.delete = (id) => {
     return db.none(
         'DELETE FROM recipes WHERE id=$1', [id]

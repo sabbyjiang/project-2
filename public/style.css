@@ -343,5 +343,39 @@ header {
     cursor: pointer;
     min-width: 20px;
     height: 20px;
+    margin-left: 2vw;
+}
+
+.edit {
+    background: rgba(243,250,253,1) no-repeat center/80% url("http://icons.iconarchive.com/icons/custom-icon-design/mono-general-2/512/edit-icon.png");
+    border-radius: 30%;
+    border: 1px dashed rgba(111,163,181,1);
+    cursor: pointer;
+    min-width: 20px;
+    height: 20px;
     margin-left: 5vw;
+}
+
+/*======================================================*/
+/* For Editing*/
+
+.recipe-edit {
+    display: flex;
+    height: 80%;
+    justify-content: center;
+    width: 100%
+}
+
+.edit-form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.edit-div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
 }

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/jquery.js"></script>
+    <script src="/script.js"></script>
+    <link rel="stylesheet" href="/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Shadows+Into+Light" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <title>Edit</title>
+</head>
+<body>
+    <div class="container landing">
+        <header>
+            <div class="recipe-info">
+                <h1>Edit {{name}}</h1>
+            </div>
+
+            <nav>
+                <div class="dropdown">
+                    <button class="dropbtn">Navigation</button>
+                    <div class="dropdown-content">
+                        <a href="/planning/user">Home</a>
+                        <a href="/planning/user/recipes/all">All Recipes</a>
+                        <a href="/planning/user/meals/all">Meals</a>
+                        <a href="/planning/user/meals/dish?dish=appetizer">Appetizers</a>
+                        <a href="/planning/user/meals/dish?dish=entree">Entrees</a>
+                        <a href="/planning/user/meals/dish?dish=side">Sides</a>
+                        <a href="/planning/user/meals/dish?dish=dessert">Desserts</a>
+                        <a href="/planning/user/meals/dish?dish=drink">Drinks</a>
+                    </div>
+                </div>
+                <div class="login-links">
+                    <div class="sign-up">
+                        <a href="/users/logout">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="welcome">
+            <div class="edit-div">
+                <h2 class="recipe-header">Options</h2>
+                <div class="recipe-edit">
+                    <form id="edit" class="edit-form">
+                        <input name="spoonacular_id" id="spoonacular_id" value={{spoonacular_id}} hidden>
+
+                        <label for="vegetarian">Is it vegetarian?</label>
+                        <input name="vegetarian" id="vegetarian" value={{vegetarian}}>
+
+                        <label for="vegan">Is it vegan?</label>
+                        <input name="vegan" id="vegan" value={{vegan}}>
+                        
+                        <label for="glutenFree">Is it gluten free?</label>
+                        <input name="glutenFree" id="glutenFree" value={{gluten_free}}>
+
+                        <label for="dairyFree">Is it dairy free?</label>
+                        <input name="dairyFree" id="dairyFree" value={{dairy_free}}>
+
+                        <label for="ketogenic">Is it ketogenic?</label>
+                        <input name="ketogenic" id="ketogenic" value={{ketogenic}}>
+
+                        <label for="healthy">Is it healthy?</label>
+                        <input name="healthy" id="healthy" value={{healthy}}>
+                        
+                        <input name="name" id="name" value="{{name}}" hidden>
+                        <input name="url" id="url" value={{url}} hidden>
+                        <input name="image" id="image" value={{image}} hidden>
+                        <button class="submit" type="submit">Save This Edit?</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
