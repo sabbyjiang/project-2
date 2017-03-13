@@ -6,17 +6,73 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="/jquery.js"></script>
     <script src="/script.js"></script>
+    <link rel="stylesheet" href="/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Shadows+Into+Light" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
     <title>Recipe Search Results</title>
 </head>
 <body>
-    <div class="results-recipes">
-        {{#recipes}}
-            <div class="recipe-short">
-                <img class="recipe-short-image" src="{{image}}" />
-                <h3 class="recipe-short-title"><a href="/planning/search/recipes/{{id}}">{{title}}</a></h3>
+    <div class="landing">
+        <header>
+            <h1>Recipe Search Results</h1>
+            <div class="login-links">
+                <div class="sign-up">
+                    <a href="/users/logout">Logout </a>
+                </div>
             </div>
-        {{/recipes}}
+        </header>
+        <main class="welcome">
+            <div class="user-search">
+                <h2 class="recipe-header">Search</h2>
+                <form method="GET" action="/planning/search/by-name" class="search-name">
+                    <div class="search-ind">
+                        <label for="cuisine">Cuisine</label>
+                        <input id="cuisine" name="cuisine" placeholder="Cuisine">
+                    </div>
+                    <div class="search-ind">
+                        <label for="diet">Diet</label>
+                        <select id="diet" name="diet">
+                            <option disabled selected value>Select a Diet Option</option>
+                            <option value="vegan">Vegan</option>
+                            <option value="vegetarian">Vegetarian</option>
+                            <option value="">Neither</option>
+                        </select>
+                    </div>
+                    <div class="search-ind">
+                        <label for="exclude-ingredients">Excluding</label>
+                        <input id="exclude-ingredients" name="excludeIngredients" placeholder="e.g. butter">
+                    </div>
+                    <div class="search-ind">
+                        <label for="intolerances">Dietary Intolerances</label>
+                        <input id="intolerances" name="intolerances" placeholder="e.g. gluten">
+                    </div>
+                    <div class="search-ind required">
+                        <label for="query">Keywords</label>
+                        <input id="query" name="query" placeholder="keywords" required>
+                    </div>
+                    <button type="submit" class="submit-name">Submit</button>
+                </form>
+
+                <form method="GET" action="/planning/search/by-ingredients" class="search-ingredients">
+                    <div class="search-ind">
+                        <label for="ingredients">Ingredients</label>
+                        <input id="ingredients" name="ingredients" placeholder="Ingredients">
+                    </div>
+                    
+                    <button type="submit" class="submit-ingredients">Submit</button>
+                </form>
+            </div>
+            <div class="results-recipes">
+                <h2 class="recipe-header">Your Search Results</h2>
+                <div class="recipes-short overflow">
+                    {{#recipes}}
+                        <div class="recipe-card-short" style="background-image: url({{image}})">
+                            <p><a href="/planning/search/recipes/{{id}}" class="recipe-name-short">{{title}}</a></p>
+                        </div>
+                    {{/recipes}}
+                </div>
+            </div>
+        </main>
     </div>
 </body>
 </html>

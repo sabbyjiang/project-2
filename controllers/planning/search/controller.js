@@ -4,7 +4,7 @@ const SPOONACULAR_URL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.
 const controller = {};
 
 controller.landing = (req, res) => {
-    const numberOfRecipes = 15;
+    const numberOfRecipes = 20;
     const url = SPOONACULAR_URL + 'recipes/random?number=' + numberOfRecipes;
 
     unirest.get(url)
@@ -51,8 +51,6 @@ controller.byName = (req,res) => {
 }
 
 controller.byIngredients = (req, res) => {
-    console.log(req.query);
-
     let ingredientsArray = req.query.ingredients.split(', ');
 
     let ingredientString = ingredientsArray.join('%2C');
@@ -76,7 +74,6 @@ controller.recipe = (req, res) => {
         .header("Accept", "application/json")
         .end(result => {
             res.render('search/recipes/show', result.body);
-            // res.json(result.body);
         });
 }
 

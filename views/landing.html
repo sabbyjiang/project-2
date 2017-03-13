@@ -15,20 +15,60 @@
     <div class="container landing">
         <header>
             <h1>Your Recipes</h1>
+            <div class="login-links">
+                <div class="sign-up">
+                    <a href="/users/logout">Logout </a>
+                </div>
+            </div>
         </header>
         <main class="welcome">
             <div class="user-search">
                 <h2 class="recipe-header">Search</h2>
+                <form method="GET" action="/planning/search/by-ingredients" class="search-ingredients">
+                    <div class="search-ind">
+                        <label for="ingredients">Ingredients</label>
+                        <input id="ingredients" name="ingredients" placeholder="Ingredients">
+                    </div>
+                    
+                    <button type="submit" class="submit-ingredients">Submit</button>
+                </form>
+                
+                <form method="GET" action="/planning/search/by-name" class="search-name">
+                    <div class="search-ind">
+                        <label for="cuisine">Cuisine</label>
+                        <input id="cuisine" name="cuisine" placeholder="Cuisine">
+                    </div>
+                    <div class="search-ind">
+                        <label for="diet">Diet</label>
+                        <select id="diet" name="diet">
+                            <option disabled selected value>Select a Diet Option</option>
+                            <option value="vegan">Vegan</option>
+                            <option value="vegetarian">Vegetarian</option>
+                            <option value="">Neither</option>
+                        </select>
+                    </div>
+                    <div class="search-ind">
+                        <label for="exclude-ingredients">Excluding</label>
+                        <input id="exclude-ingredients" name="excludeIngredients" placeholder="e.g. butter">
+                    </div>
+                    <div class="search-ind">
+                        <label for="intolerances">Dietary Intolerances</label>
+                        <input id="intolerances" name="intolerances" placeholder="e.g. gluten">
+                    </div>
+                    <div class="search-ind required">
+                        <label for="query">Keywords</label>
+                        <input id="query" name="query" placeholder="keywords" required>
+                    </div>
+                    <button type="submit" class="submit-name">Submit</button>
+                </form>
+
             </div>
             <div class="user-recipes">
                 <h2 class="recipe-header">Recently Saved Recipes</h2>
-                <div class="user-recipes-short">
-                    <!--If there are no recipes-->
-                        <p class="error">{{none}}</p>
-                    <!--<p>{{none}}</p>-->
+                <div class="recipes-short">
                     {{#recipes}}
                         <div class="recipe-card-short" style="background-image: url({{image}})">
-                            <p><a class="recipe-name-short" href="recipes/{{id}}">{{name}}</a></p>
+                            <p><a class="recipe-name-short" href="user/recipes/{{id}}">{{name}}</a></p>
                         </div>
                     {{/recipes}}
                 </div>

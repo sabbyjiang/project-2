@@ -6,53 +6,87 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="/jquery.js"></script>
     <script src="/script.js"></script>
+    <link rel="stylesheet" href="/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Shadows+Into+Light" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
     <title>{{title}}</title>
 </head>
 <body>
-        <h1>{{title}}</h1>
-        <p>From <a class="sourceURL" href="{{sourceUrl}}">{{sourceName}}</a></p>
-        <p>Servings: {{servings}}</p>
-        <p>Ready In: {{readyInMinutes}} min</p>
-        <img src="{{image}}" />
-        <div class="ingredients">
-            <ul>
-                {{#extendedIngredients}}
-                <li>{{originalString}}</li>
-                {{/extendedIngredients}}
-            </ul>
-        </div>
-        {{#analyzedInstructions}}
-            <ol>
-                {{#steps}}
-                <li>{{step}}</li>
-                {{/steps}}
-            </ol>
-        {{/analyzedInstructions}}
-        <form id="save">
-            <label for="dish">What Type of Dish</label>
-            <select name="dish" class="dish">
-                <option value="" disabled selected>Dish Type</option>
-                <option value="appetizer">Appetizer</option>
-                <option value="entree">Entre&eacute;</option>
-                <option value="side">Side</option>
-                <option value="dessert">Dessert</option>
-                <option value="drink">Drink</option>
-            </select>
-            <label for="breakfast">Breakfast</label>
-            <input type="checkbox" name="breakfast" id="breakfast">
-            <label for="lunch">Lunch</label>
-            <input type="checkbox" name="lunch" id="lunch">
-            <label for="dinner">Dinner</label>
-            <input type="checkbox" name="dinner" id="dinner">
+    <div class="container landing">
+        <header>
+            <div class="recipe-info">
+                <h1>{{title}}</h1>
+                <p>From <a class="sourceURL" href="{{sourceUrl}}">{{sourceName}}</a></p>
+            </div>
+            <div class="recipe-info">
+                <p>Servings: {{servings}}</p>
+                <p>Ready In: {{readyInMinutes}} min</p>
+            </div>
 
-            <input name="vegetarian" id="vegetarian" value={{vegetarian}} hidden>
-            <input name="vegan" id="vegan" value={{vegan}} hidden>
-            <input name="glutenFree" id="glutenFree" value={{glutenFree}} hidden>
-            <input name="dairyFree" id="dairyFree" value={{dairyFree}} hidden>
-            <input name="ketogenic" id="ketogenic" value={{ketogenic}} hidden>
-            <input name="healthy" id="healthy" value={{veryHealthy}} hidden>
-            <button type="submit">Save?</button>
-        </form>
+            <form id="save">
+                <!--<h3>Save This Recipe?</h3>-->
+                <!--<label for="dish">What Type of Dish</label>
+                <select name="dish" class="dish">
+                    <option value="" disabled selected>Dish Type</option>
+                    <option value="appetizer">Appetizer</option>
+                    <option value="entree">Entre&eacute;</option>
+                    <option value="side">Side</option>
+                    <option value="dessert">Dessert</option>
+                    <option value="drink">Drink</option>
+                </select>
+                <br>
+
+                <label for="breakfast">Breakfast</label>
+                <input type="checkbox" name="breakfast" id="breakfast">
+                <label for="lunch">Lunch</label>
+                <input type="checkbox" name="lunch" id="lunch">
+                <label for="dinner">Dinner</label>
+                <input type="checkbox" name="dinner" id="dinner">-->
+                
+                <!--<br> -->
+
+                <input name="vegetarian" id="vegetarian" value={{vegetarian}} hidden>
+                <input name="vegan" id="vegan" value={{vegan}} hidden>
+                <input name="glutenFree" id="glutenFree" value={{glutenFree}} hidden>
+                <input name="dairyFree" id="dairyFree" value={{dairyFree}} hidden>
+                <input name="ketogenic" id="ketogenic" value={{ketogenic}} hidden>
+                <input name="healthy" id="healthy" value={{veryHealthy}} hidden>
+                <input name="image" id="image" value={{image}} hidden>
+                <button type="submit">Save This Recipe?</button>
+            </form>
+
+            <div class="login-links">
+                <div class="sign-up">
+                    <a href="/users/logout">Logout </a>
+                </div>
+            </div>
+        </header>
+        <main class="welcome">
+            <div class="recipe-ingredients">
+                <h2 class="recipe-header">Ingredients</h2>
+                <div class="overflow">
+                    <ul>
+                        {{#extendedIngredients}}
+                        <li>{{originalString}}</li>
+                        {{/extendedIngredients}}
+                    </ul>
+                </div>
+            </div>
+            <div class="recipe-instructions">
+                <h2 class="recipe-header">Instructions</h2>
+                <div class="instructions overflow">
+                    <div class="recipe-card-short center" style="background-image: url({{image}})">
+                    </div>
+                    {{#analyzedInstructions}}
+                        <ol>
+                            {{#steps}}
+                            <li>{{step}}</li>
+                            {{/steps}}
+                        </ol>
+                    {{/analyzedInstructions}}
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

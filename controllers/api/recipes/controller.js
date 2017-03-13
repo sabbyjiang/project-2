@@ -42,22 +42,22 @@ controller.create = (req, res) => {
         newRecipe[field] = req.body[field];
     });
 
-    const mealObj = {
-        dish: req.body.dish,
-        breakfast: req.body.breakfast,
-        lunch: req.body.lunch,
-        dinner: req.body.dinner,
-    };
+    // const mealObj = {
+    //     dish: req.body.dish,
+    //     breakfast: req.body.breakfast,
+    //     lunch: req.body.lunch,
+    //     dinner: req.body.dinner,
+    // };
 
     recipes.create(newRecipe, req.user.id)
         .then(recipeData => {
-            mealObj['recipe_id'] = recipeData.id;
-            console.log(mealObj);
-            meals.create(mealObj)
-                .then(mealData => {
-                    res.json(recipeData);
-                })
-                .catch(err => {'Error posting new meal:', err});
+            res.json(recipeData);
+            // mealObj['recipe_id'] = recipeData.id;
+            // meals.create(mealObj)
+            //     .then(mealData => {
+            //         res.json(mealData);
+            //     })
+            //     .catch(err => {'Error posting new meal:', err});
         })
         .catch(err => console.log('Error: new recipe:', err));
 }
