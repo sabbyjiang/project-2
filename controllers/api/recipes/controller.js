@@ -36,7 +36,7 @@ controller.findByDiet = (req,res) => {
 }
 
 controller.create = (req, res) => {
-    const inputFields = ['name', 'image', 'vegetarian', 'vegan', 'glutenFree', 'dairyFree', 'ketogenic', 'healthy', 'url'];
+    const inputFields = ['name', 'image', 'vegetarian', 'vegan', 'glutenFree', 'dairyFree', 'ketogenic', 'healthy', 'url', 'spoonacular_id'];
     const newRecipe = {};
     inputFields.forEach(field => {
         newRecipe[field] = req.body[field];

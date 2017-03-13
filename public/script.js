@@ -13,6 +13,7 @@ $(document).ready(()=>{
         recipeOptions.forEach(option => {
             recipe[option] = ($('#'+option).val() === "true");
         });
+        recipe['spoonacular_id'] = $('#spoonacular_id').val();
 
         return recipe;
     }
@@ -21,7 +22,6 @@ $(document).ready(()=>{
         e.preventDefault();
 
         const recipeData = newRecipe();
-        console.log(recipeData)
 
         $.ajax({
             method: 'POST',

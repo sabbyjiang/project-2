@@ -1,4 +1,6 @@
 const recipes = require('../../../../models/recipes-model');
+const unirest = require('unirest');
+const SPOONACULAR_URL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/";
 
 const controller = {};
 
@@ -19,13 +21,26 @@ controller.findOne = (req, res) => {
 
     recipes.findOne(id, req.user.id)
         .then(data => {
-            res.render('user/recipes/show', {recipe: data}); 
+            console.log(data);
+            res.redirect('/planning/user/recipes/saved/' + data.spoonacular_id); 
         })
         .catch(err => {
-            console.log('Error: FindOne:', err)
-            res.render('user/recipes/show', {none: 'Oops! That recipe doesn\'t seem to exist'});
+            console.log('Error: FindOne:', err);
         });
 };
+
+controller.findBySpoonacular = (req, res) => {
+    const id = req.params.id;
+
+    let url = process.env.SPOONACULAR_URL + "recipes/" + id + "/information";
+
+    unirest.get(url)
+        .header("X-Mashape-Key", process.env.SPOONACULAR_API_KEY)
+        .header("Accept", "application/json")
+        .end(result => {
+            res.render('search/recipes/show', result.body);
+        });
+}
 
 controller.findByDiet = (req,res) => {
     const choices = ['vegetarian', 'vegan', 'gluten_free', 'dairy_free', 'ketogenic', 'healthy'];

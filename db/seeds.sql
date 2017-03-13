@@ -20,6 +20,7 @@ CREATE TABLE recipes(
     ketogenic BOOLEAN NOT NULL,
     healthy BOOLEAN NOT NULL,
     url VARCHAR(255) NOT NULL,
+    spoonacular_id VARCHAR(255) NOT NULL,
     users_id INT REFERENCES users(id) NOT NULL
 );
 
