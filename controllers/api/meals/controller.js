@@ -3,7 +3,6 @@ const meals = require('../../../models/meals-model');
 const controller = {};
 
 controller.findAll = (req, res) => {
-    console.log('issue in meals.findall');
     meals.findAll(req.user.id)
         .then(data => res.json(data))
         .catch(err => console.log('ERROR: findAll', err));
