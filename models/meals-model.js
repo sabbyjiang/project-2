@@ -4,7 +4,7 @@ const meals = {};
 
 meals.findAll = (user_id) => {
     return db.manyOrNone(
-        'SELECT * FROM meals JOIN recipes ON meals.recipe_id = recipes.id WHERE users_id=$1', [user_id]
+        'SELECT * FROM meals JOIN recipes ON meals.recipe_id = recipes.id WHERE meals.users_id=$1', [user_id]
     );
 };
 
@@ -19,14 +19,14 @@ meals.findByMeal = (mealPref, user_id) => {
 
     const conditions = statement.join(' AND ');
 
-    const query = 'SELECT * FROM meals JOIN recipes ON meals.recipe_id = recipes.id WHERE ' + conditions + ' AND users_id = $1 ORDER BY dish';
+    const query = 'SELECT * FROM meals JOIN recipes ON meals.recipe_id = recipes.id WHERE ' + conditions + ' AND meals.users_id = $1 ORDER BY dish';
 
     return db.any(query, user_id);
 }
 
 meals.findByDish = (dish, user_id) => {
     return db.any(
-        'SELECT * FROM meals JOIN recipes ON meals.recipe_id = recipes.id WHERE dish=$1 AND users_id=$2', [dish, user_id]
+        'SELECT * FROM meals JOIN recipes ON meals.recipe_id = recipes.id WHERE dish=$1 AND meals.users_id=$2', [dish, user_id]
     );
 }
 

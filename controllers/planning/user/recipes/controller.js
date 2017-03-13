@@ -21,7 +21,7 @@ controller.findOne = (req, res) => {
 
     recipes.findOne(id, req.user.id)
         .then(data => {
-            console.log(data);
+            res.cookie('recipe', data.id);
             res.redirect('/planning/user/recipes/saved/' + data.spoonacular_id); 
         })
         .catch(err => {
@@ -38,7 +38,7 @@ controller.findBySpoonacular = (req, res) => {
         .header("X-Mashape-Key", process.env.SPOONACULAR_API_KEY)
         .header("Accept", "application/json")
         .end(result => {
-            res.render('search/recipes/show', result.body);
+            res.render('user/recipes/show', result.body);
         });
 }
 

@@ -189,9 +189,14 @@ header {
     height: 100%;
 }
 
-.user-recipes {
-    width: 75%;
+.results-recipes {
     height: 100%;
+    width: 75%;
+}
+
+.user-recipes {
+    height: 100%;
+    width: 75%;
 }
 
 .recipes-short {

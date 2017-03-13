@@ -52,12 +52,6 @@ controller.create = (req, res) => {
     recipes.create(newRecipe, req.user.id)
         .then(recipeData => {
             res.json(recipeData);
-            // mealObj['recipe_id'] = recipeData.id;
-            // meals.create(mealObj)
-            //     .then(mealData => {
-            //         res.json(mealData);
-            //     })
-            //     .catch(err => {'Error posting new meal:', err});
         })
         .catch(err => console.log('Error: new recipe:', err));
 }
