@@ -24,26 +24,6 @@
             </div>
 
             <form id="save">
-                <!--<h3>Save This Recipe?</h3>-->
-                <!--<label for="dish">What Type of Dish</label>
-                <select name="dish" class="dish">
-                    <option value="" disabled selected>Dish Type</option>
-                    <option value="appetizer">Appetizer</option>
-                    <option value="entree">Entre&eacute;</option>
-                    <option value="side">Side</option>
-                    <option value="dessert">Dessert</option>
-                    <option value="drink">Drink</option>
-                </select>
-                <br>
-
-                <label for="breakfast">Breakfast</label>
-                <input type="checkbox" name="breakfast" id="breakfast">
-                <label for="lunch">Lunch</label>
-                <input type="checkbox" name="lunch" id="lunch">
-                <label for="dinner">Dinner</label>
-                <input type="checkbox" name="dinner" id="dinner">-->
-                
-                <!--<br> -->
                 <input name="spoonacular_id" id="spoonacular_id" value={{id}} hidden>
                 <input name="vegetarian" id="vegetarian" value={{vegetarian}} hidden>
                 <input name="vegan" id="vegan" value={{vegan}} hidden>
@@ -55,11 +35,25 @@
                 <button type="submit">Save This Recipe?</button>
             </form>
 
-            <div class="login-links">
-                <div class="sign-up">
-                    <a href="/users/logout">Logout </a>
+            <nav>
+                <div class="dropdown">
+                    <button class="dropbtn">Navigation</button>
+                    <div class="dropdown-content">
+                        <a href="/planning/user">Home</a>
+                        <a href="/planning/user/recipes/all">All Recipes</a>
+                        <a href="/planning/user/meals/dish?dish=appetizer">Appetizers</a>
+                        <a href="/planning/user/meals/dish?dish=entree">Entrees</a>
+                        <a href="/planning/user/meals/dish?dish=side">Sides</a>
+                        <a href="/planning/user/meals/dish?dish=dessert">Desserts</a>
+                        <a href="/planning/user/meals/dish?dish=drink">Drinks</a>
+                    </div>
                 </div>
-            </div>
+                <div class="login-links">
+                    <div class="sign-up">
+                        <a href="/users/logout">Logout</a>
+                    </div>
+                </div>
+            </nav>
         </header>
         <main class="welcome">
             <div class="recipe-ingredients">
