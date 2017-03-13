@@ -15,16 +15,31 @@
     <div class="container landing">
         <header>
             <h1>Your Recipes</h1>
-            <div class="login-links">
-                <div class="sign-up">
-                    <a href="/users/logout">Logout </a>
+            <nav>
+                <div class="dropdown">
+                    <button class="dropbtn">Navigation</button>
+                    <div class="dropdown-content">
+                        <a href="/planning/user">Home</a>
+                        <a href="/planning/user/recipes/all">All Recipes</a>
+                        <a href="/planning/user/meals/dish?dish=appetizer">Appetizer</a>
+                        <a href="/planning/user/meals/dish?dish=entree">Entree</a>
+                        <a href="/planning/user/meals/dish?dish=side">Side</a>
+                        <a href="/planning/user/meals/dish?dish=dessert">Dessert</a>
+                        <a href="/planning/user/meals/dish?dish=drink">Drink</a>
+                    </div>
                 </div>
-            </div>
+                <div class="login-links">
+                    <div class="sign-up">
+                        <a href="/users/logout">Logout</a>
+                    </div>
+                </div>
+            </nav>
         </header>
         <main class="welcome">
             <div class="user-search">
                 <h2 class="recipe-header">Search</h2>
                 <form method="GET" action="/planning/search/by-ingredients" class="search-ingredients">
+                    <h3>Search By Ingredient</h3>
                     <div class="search-ind">
                         <label for="ingredients">Ingredients</label>
                         <input id="ingredients" name="ingredients" placeholder="Ingredients">
@@ -34,6 +49,11 @@
                 </form>
                 
                 <form method="GET" action="/planning/search/by-name" class="search-name">
+                    <h3>Search By Keyword</h3>
+                    <div class="search-ind">
+                        <label for="query">Keywords<span class="required">*</span></label>
+                        <input id="query" name="query" placeholder="keywords" required>
+                    </div>
                     <div class="search-ind">
                         <label for="cuisine">Cuisine</label>
                         <input id="cuisine" name="cuisine" placeholder="Cuisine">
@@ -54,10 +74,6 @@
                     <div class="search-ind">
                         <label for="intolerances">Dietary Intolerances</label>
                         <input id="intolerances" name="intolerances" placeholder="e.g. gluten">
-                    </div>
-                    <div class="search-ind required">
-                        <label for="query">Keywords</label>
-                        <input id="query" name="query" placeholder="keywords" required>
                     </div>
                     <button type="submit" class="submit-name">Submit</button>
                 </form>

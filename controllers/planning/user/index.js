@@ -6,7 +6,7 @@ router.use('/recipes', require('./recipes'));
 router.get('/', (req, res) => {
     recipes.findSome(req.user.id)
         .then(data => {
-            res.render('landing', {recipes: data});
+            res.render('user/index', {recipes: data});
         })
         .catch(err => {
             console.log('Error: Find Some', err);

@@ -30,7 +30,7 @@ controller.findByMeal = (req,res) => {
 }
 
 controller.findByDish = (req, res) => {
-    meals.findByDish(req.body.dish, req.user.id)
+    meals.findByDish(req.query.dish, req.user.id)
         .then(data => {
             res.render('user/meals/dish', {dish: data})
         })
