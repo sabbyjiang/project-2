@@ -79,7 +79,7 @@ nav {
     display: flex;
     justify-content: flex-end;
     height: 10vh;
-    width: 100%;
+    width: 20%;
 }
 
 /*Dropdown is borrowed from w3school*/
@@ -177,11 +177,11 @@ header {
 
 .welcome-ingredients {
     border-right: 3px dashed rgba(162,203,216,1);
-    width: 25%;
+    width: 30%;
 }
 
 .welcome-instructions {
-    width: 75%;
+    width: 70%;
 }
 
 .recipe-header {
@@ -245,18 +245,18 @@ header {
 
 .user-search {
     border-right: 3px dashed rgba(162,203,216,1);
-    width: 25%;
+    width: 30%;
     height: 100%;
 }
 
 .results-recipes {
     height: 100%;
-    width: 75%;
+    width: 70%;
 }
 
 .user-recipes {
     height: 100%;
-    width: 75%;
+    width: 70%;
 }
 
 .recipes-short {
@@ -315,12 +315,12 @@ header {
 
 .recipe-ingredients {
     border-right: 3px dashed rgba(162,203,216,1);
-    width: 25%;
+    width: 30%;
     line-height: 2;
 }
 
 .recipe-instructions {
-    width: 75%;
+    width: 70%;
     line-height: 2;
 }
 

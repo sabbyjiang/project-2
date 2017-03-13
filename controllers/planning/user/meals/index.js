@@ -3,6 +3,9 @@ const controller = require('./controller');
 
 router.get('/all', controller.findAll);
 router.get('/dish', controller.findByDish);
-router.post('/by-meal', controller.findByMeal);
+router.get('/by-meal', controller.findByMeal);
+router.get('/', (req, res) => {
+    res.redirect('/planning/user/meals/all');
+})
 
 module.exports = router;

@@ -12,14 +12,20 @@ meals.findByMeal = (mealPref, user_id) => {
     let statement = [];
 
     Object.keys(mealPref).forEach(key => {
-    if(mealPref[key]){
-        statement.push('' + key + '=TRUE');
-    }
+        console.log('key', key);
+        if(mealPref[key]){
+            statement.push('meals.' + key + '=true');
+        }
     });
+    console.log("statement", statement);
 
     const conditions = statement.join(' AND ');
 
+    console.log("conditions", conditions);
+
     const query = 'SELECT * FROM meals JOIN recipes ON meals.recipe_id = recipes.id WHERE ' + conditions + ' AND meals.users_id = $1 ORDER BY dish';
+
+    console.log('query', query);
 
     return db.any(query, user_id);
 }

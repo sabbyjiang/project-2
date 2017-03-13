@@ -1,6 +1,5 @@
 DROP TABLE IF EXISTS recipes CASCADE;
 DROP TABLE IF EXISTS meals CASCADE;
-DROP TABLE IF EXISTS pairing CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE users(
@@ -31,16 +30,5 @@ CREATE TABLE meals(
     dinner BOOLEAN NOT NULL,
     dish VARCHAR(255) NOT NULL,
     recipe_id INT REFERENCES recipes(id) NOT NULL,
-    users_id INT REFERENCES users(id) NOT NULL
-);
-
-CREATE TABLE pairing(
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    recipe1 INT REFERENCES recipes(id) NOT NULL,
-    recipe2 INT REFERENCES recipes(id) NOT NULL,
-    recipe3 INT REFERENCES recipes(id),
-    recipe4 INT REFERENCES recipes(id),
-    recipe5 INT REFERENCES recipes(id),
     users_id INT REFERENCES users(id) NOT NULL
 );

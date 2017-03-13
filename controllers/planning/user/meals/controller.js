@@ -16,7 +16,7 @@ controller.findByMeal = (req,res) => {
     const choices = ['breakfast', 'lunch', 'dinner'];
     const dietPref = {};
     choices.forEach(choice => {
-        dietPref[choice] = (req.body[choice] == 'TRUE');
+        dietPref[choice] = (req.query[choice] == 'on');
     });
 
     meals.findByMeal(dietPref, req.user.id)

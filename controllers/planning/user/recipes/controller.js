@@ -7,7 +7,6 @@ const controller = {};
 controller.findAll = (req,res) => {
     recipes.findAll(req.user.id)
         .then(data => {
-            console.log(data);
             res.render('user/recipes/all', {recipes: data});
         })
         .catch(err => {
@@ -46,12 +45,12 @@ controller.findByDiet = (req,res) => {
     const choices = ['vegetarian', 'vegan', 'gluten_free', 'dairy_free', 'ketogenic', 'healthy'];
     const dietPref = {};
     choices.forEach(choice => {
-        dietPref[choice] = (req.body[choice] == 'TRUE');
+        dietPref[choice] = (req.query[choice] == 'on');
     });
 
     recipes.findByDiet(dietPref, req.user.id)
         .then(data => {
-                res.render('user/recipes/bydiet', {recipes: data});
+            res.render('user/recipes/bydiet', {recipes: data});
         })
         .catch(err => {
             console.log('Error: findByDiet:', err);

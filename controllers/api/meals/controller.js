@@ -32,8 +32,10 @@ controller.create = (req, res) => {
     const newMeal = {};
 
     newMealKeys.forEach(key => {
-            newMeal[key] = (req.body[key] == 'TRUE');
+            newMeal[key] = (req.body[key] == 'true');
     });
+
+    console.log(newMeal);
 
     newMeal['dish'] = req.body.dish;
 

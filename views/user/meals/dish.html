@@ -6,11 +6,67 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="/jquery.js"></script>
     <script src="/script.js"></script>
+    <link rel="stylesheet" href="/reset.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway|Shadows+Into+Light" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
-    <title>Document</title>
+    <title>Your Dishes</title>
 </head>
 <body>
+    <div class="container landing">
+        <header>
+            <h1>Dishes</h1>
+            <nav>
+                <div class="dropdown">
+                    <button class="dropbtn">Navigation</button>
+                    <div class="dropdown-content">
+                        <a href="/planning/user">Home</a>
+                        <a href="/planning/user/recipes/all">All Recipes</a>
+                        <a href="/planning/user/meals/all">Meals</a>
+                        <a href="/planning/user/meals/dish?dish=appetizer">Appetizers</a>
+                        <a href="/planning/user/meals/dish?dish=entree">Entrees</a>
+                        <a href="/planning/user/meals/dish?dish=side">Sides</a>
+                        <a href="/planning/user/meals/dish?dish=dessert">Desserts</a>
+                        <a href="/planning/user/meals/dish?dish=drink">Drinks</a>
+                    </div>
+                </div>
+                <div class="login-links">
+                    <div class="sign-up">
+                        <a href="/users/logout">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="welcome">
+            <div class="user-search">
+                <h2 class="recipe-header">Filter By Meals</h2>
+                <form method="GET" action="/planning/user/meals/by-meal" class="filter-meals">
+                    <div class="search-ind">
+                        <label for="breakfast">Breakfast</label>
+                        <input type="checkbox" name="breakfast" id="breakfast">
+                    </div>
+                    <div class="search-ind">
+                        <label for="lunch">Lunch</label>
+                        <input type="checkbox" name="lunch" id="lunch">
+                    </div>
+                    <div class="search-ind">
+                        <label for="dinner">Dinner</label>
+                        <input type="checkbox" name="dinner" id="dinner">
+                    </div>
+                    <button class="submit" type="submit">Filter</button>
+                </form>
+            </div>
+            <div class="user-recipes">
+                <h2 class="recipe-header">Recipes</h2>
+                <div class="recipes-short overflow">
+                    {{#dish}}
+                        <div class="recipe-card-short" style="background-image: url({{image}})">
+                            <p><a class="recipe-name-short" href="/planning/user/recipes/{{id}}">{{name}}</a></p>
+                        </div>
+                    {{/dish}}
+                </div>
+            </div>
+        </main>
+    </div>
     
 </body>
 </html>
