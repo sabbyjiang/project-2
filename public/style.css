@@ -332,3 +332,14 @@ header {
     height: 90%;
     overflow: auto;
 }
+
+/*======================================================*/
+/* For Deleting*/
+
+.delete {
+    background-image: url('https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/trash-512.png');
+    background-position: center;
+    background-size: cover;
+    width: 5px;
+    height: 5px;
+}

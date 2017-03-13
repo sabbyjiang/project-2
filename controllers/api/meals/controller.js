@@ -54,4 +54,12 @@ controller.delete = (req, res) => {
         .catch(err => console.log('ERROR: delete', err));
 }
 
+controller.deleteByRecipe = (req, res) => {
+    const recipeID = req.cookies.recipe;
+    meals.deleteByRecipe(recipeID)
+        .then(res.redirect('/api/recipes/' + recipeID))
+        .catch(err => console.log('error: deleteByRecipe', err));
+        
+}
+
 module.exports = controller;

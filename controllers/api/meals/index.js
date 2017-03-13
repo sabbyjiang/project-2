@@ -6,5 +6,6 @@ router.post('/by-meal', controller.findByMeal);
 router.post('/by-dish', controller.findByDish);
 router.post('/new', controller.create);
 router.delete('/:id', controller.delete);
+router.delete('/by-recipe', controller.deleteByRecipe);
 
 module.exports = router;
