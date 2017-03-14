@@ -66,6 +66,7 @@ controller.byIngredients = (req, res) => {
         });
 }
 
+// Finds recipe by it's spoonacular id number
 controller.recipe = (req, res) => {
     const id = req.params.id;
 

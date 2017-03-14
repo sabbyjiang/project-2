@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const controller = require('./controller');
 
+// routing from ~/api/meals
+
 router.get('/all', controller.findAll);
 router.post('/by-meal', controller.findByMeal);
 router.post('/by-dish', controller.findByDish);
