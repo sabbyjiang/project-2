@@ -18,22 +18,29 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 
 // passport set up
+// must be done before router!
+// Session is used here in order to save the log-in session
 app.use(session({
         secret: 'keyboard cat', 
         resave: true,
         saveUninitialized: true
 }));
 
+
 app.use(passport.initialize());
 app.use(passport.session());
+// Uses morgan to log all the dev side stuff
 app.use(logger('dev'));
 
 // body-parser setup
+// setting extended to false means that it only accepts arrays or strings, setting to true means it will accept any type
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(bodyParser.json());
 
 app.use(cookieParser());
 
+// Alerts the user from backend
 app.use(flash());
 
 const User = require('./models/user-model');
@@ -82,31 +89,29 @@ passport.use(
 
 // Checks login creditials
 passport.use(
-        'local-login',
-        new LocalStrategy(
-                {
-                        usernameField: 'user[email]',
-                        passwordField: 'user[password]',
-                        passReqToCallback: true
-                },
-                (req, email, password, done) => {
-                        User.findByEmail(email)
-                                .then(user => {
-                                        if(user){
-                                                const isAuthed = bcrypt.compareSync(password, user.password_digest);
-                                                if(isAuthed){
-                                                        return done(null, user);
-                                                } else {
-                                                        return done(null, false);
-                                                }
-                                        } else {
-                                                return done(null, false);
-                                        }
-                                });
-                }
-        )
+  'local-login',
+  new LocalStrategy({
+      usernameField: 'user[email]',
+      passwordField: 'user[password]',
+      passReqToCallback: true
+    },
+    (req, email, password, done) => {
+      User.findByEmail(email)
+        .then(user => {
+          if (user) {
+            const isAuthed = bcrypt.compareSync(password, user.password_digest);
+            if (isAuthed) {
+              return done(null, user);
+            } else {
+              return done(null, false);
+            }
+          } else {
+            return done(null, false);
+          }
+        });
+    }
+  )
 );
-
 
 app.use('/', require('./router'));
 
