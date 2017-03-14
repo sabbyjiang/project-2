@@ -379,3 +379,30 @@ header {
     height: 100%;
     width: 100%;
 }
+
+/*======================================================*/
+/* For Modals*/
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.kitten {
+  background-color: rgba(243,250,253,1);
+  border-radius: 3px;
+}
+
+.new-kitten {
+    margin: 0 auto;
+}

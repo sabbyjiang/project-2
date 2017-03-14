@@ -11,6 +11,7 @@ router.use('/planning',
     require('./controllers/planning'));
 router.use('/api', require('./controllers/api'));
 router.use('/users', require('./controllers/users'));
+router.use('/kitten', require('./controllers/kitten'));
 router.get('/', (req, res) => res.render('index'));
 
 module.exports = router;

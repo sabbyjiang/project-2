@@ -119,7 +119,30 @@ $(document).ready(()=>{
             }
         })
 
-    })
+    });
 
+    const toggleClass = () => {
+        const modal = document.querySelector('#modal');
+        modal.classList.toggle('modal');
+        modal.classList.toggle('hidden');
+    }
+
+    $('.new-kitten').click(e => {
+        e.preventDefault();
+
+        $.ajax({
+            method: 'GET',
+            url: '/kitten',
+            success: kitten => {
+                console.log(kitten);
+                $('.kitten').attr('src', kitten.body.source);
+                toggleClass();
+            }
+        });
+    });
+
+    $('.kitten').click(e => {
+        toggleClass();
+    });
 
 })
