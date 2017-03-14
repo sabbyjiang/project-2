@@ -2,24 +2,28 @@ const db = require('../config/database');
 
 const recipes = {};
 
+// Selects all recipes from the user
 recipes.findAll = (user_id) => {
     return db.manyOrNone(
         'SELECT * FROM recipes WHERE users_id=$1', [user_id]
     );
 };
 
+// Finds 4 most recent recipes from the user
 recipes.findSome = (user_id) => {
     return db.manyOrNone(
         'SELECT * FROM recipes WHERE users_id=$1 ORDER BY recipes.id DESC LIMIT 4', [user_id]
     );
 };
 
+// Finds a single recipe from the user based off the userid
 recipes.findOne = (id, user_id) => {
     return db.one(
         'SELECT * FROM recipes WHERE id=$1 AND users_id=$2', [id, user_id]
     );
 };
 
+// Finds by dietary choices from the user
 recipes.findByDiet = (dietPref, user_id) => {
     let statement = [];
 
@@ -36,6 +40,7 @@ recipes.findByDiet = (dietPref, user_id) => {
     return db.any(query, [user_id]);
 };
 
+// Creates a new recipe
 recipes.create = (recipeObj, user_id) => {
     recipeObj['user_id'] = user_id;
     return db.one(
@@ -43,6 +48,7 @@ recipes.create = (recipeObj, user_id) => {
     );
 };
 
+// Edits a recipe
 recipes.edit = (recipeObj, user_id) => {
     recipeObj['user_id'] = user_id;
 
@@ -51,6 +57,7 @@ recipes.edit = (recipeObj, user_id) => {
     );
 }
 
+// Deletes a recipe from the database
 recipes.delete = (id) => {
     return db.none(
         'DELETE FROM recipes WHERE id=$1', [id]

@@ -3,6 +3,7 @@ const db = require('../config/database');
 
 const User = {};
 
+// creates a new user
 User.create = (user) => {
     // Creates a hashed password
     const password = bcrypt.hashSync(user.password, 10);
