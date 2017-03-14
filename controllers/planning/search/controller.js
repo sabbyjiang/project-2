@@ -3,6 +3,7 @@ const SPOONACULAR_URL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.
 
 const controller = {};
 
+// Gives a random selection of recipes for the user to get inspiration from
 controller.landing = (req, res) => {
     const numberOfRecipes = 20;
     const url = SPOONACULAR_URL + 'recipes/random?number=' + numberOfRecipes;
@@ -15,11 +16,11 @@ controller.landing = (req, res) => {
         });
 }
 
+// Gets recipes for keywords and other optional queries
 controller.byName = (req,res) => {
     const numberOfRecipes = 20;
 
     // Handles the optional factors;
-    // REMEMBER TO INCLUDE INSTRUCTIIONS REQUIRED AND NUMBER
     const possibleParameters = ['cuisine', 'diet', 'excludeIngredients', 'intolerances', 'query'];
     let queryArray = [];
 
@@ -50,6 +51,7 @@ controller.byName = (req,res) => {
         });
 }
 
+// Finds recipes by ingredients
 controller.byIngredients = (req, res) => {
     let ingredientsArray = req.query.ingredients.split(', ');
 
