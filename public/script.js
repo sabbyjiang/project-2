@@ -134,7 +134,6 @@ $(document).ready(()=>{
             method: 'GET',
             url: '/kitten',
             success: kitten => {
-                console.log(kitten);
                 $('.kitten').attr('src', kitten.body.source);
                 toggleClass();
             }

@@ -171,7 +171,7 @@ header {
     border: 5px solid rgba(162,203,216,1);
     display: flex;
     flex-direction: row;
-    height: 80vh;
+    height: 75vh;
     width: 90%;
 }
 
@@ -404,5 +404,5 @@ header {
 }
 
 .new-kitten {
-    margin: 0 auto;
+    margin: 2vh auto 0 auto;
 }
