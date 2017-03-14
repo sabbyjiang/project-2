@@ -1,22 +1,29 @@
 # Project 2
 
-## Name of the App:
-Recipe search for healthier living
+## Recipe Organizer:
+### Technologies Used:
+- jQuery
+- Node.js
+    - passport
+    - bcrypt
+    - morgan
+    - unirest
+    - cookie-parser
+    - pg-promise
+    - session
+    - express
+    - express-session
+    - mustache-express
+- HTML, CSS
+- Spoonacular API
 
-## API: 
-[Edamam Recipe API](https://developer.edamam.com/edamam-docs-recipe-api)
+### Approach Taken:
+The idea behind this application was to create a way for users to have access to a recipe database, and save recipes to their profile. They can then organize recipes by common queries, and filter them later that matches their mood. 
 
-## Overall:
-The app is designed so that a user may be able to better search recipes, save dietary preferences so that recipes only within those parameters show up, and save recipes for future use. They should also be able to export them.
+### User Stories:
+As a user, they should be able to query the database, store recipes to the database (specific to them), create filtering results, and then filter their recipes. 
 
+### Wireframe: 
+[User Landing Page](https://wireframe.cc/b0jHhn)
+- Every page follows this scheme with slight changes to the left panel that may include search functions, filtering functions
 
-## Functionality
-After creating an account and logging in, the user will be asked about their preferences. A list of suggestions for search words will then be given to them. The user can then search, save, and select recipes. 
-
-#### Reach Goals: 
-- Connect a second API which will be able to show them farmers markets in their area
-
-- Be able to query the farmer's market to make sure they sell the same kind of ingredients
-
-## Technology Intended to Use:
-- Node.js, PSQL, jQuery, HMTL5, CSS
