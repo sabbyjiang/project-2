@@ -2,6 +2,7 @@ const meals = require('../../../../models/meals-model');
 
 const controller = {};
 
+// Finds all recipes under the meals model
 controller.findAll = (req,res) => {
     meals.findAll(req.user.id)
         .then(data => {
@@ -12,6 +13,8 @@ controller.findAll = (req,res) => {
             // res.render('user/meals/all', {none: 'Oops! You don\'t seem to have any saved meals'});
 };
 
+// Finds recipes by certain meal restraints
+// Only returns the recipes that meet ALL criteria
 controller.findByMeal = (req,res) => {
     const choices = ['breakfast', 'lunch', 'dinner'];
     const dietPref = {};
@@ -25,10 +28,10 @@ controller.findByMeal = (req,res) => {
         })
         .catch(err => {
             console.log('Error: findByMeal:', err);
-            // res.render('user/meals/bymeal', {none: 'Oops! You don\'t seem to have any recipes associated with these parameters'});
         });
 }
 
+// Finds recipes from the meals database by dish associated
 controller.findByDish = (req, res) => {
     meals.findByDish(req.query.dish, req.user.id)
         .then(data => {

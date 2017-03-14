@@ -4,6 +4,7 @@ const SPOONACULAR_URL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.
 
 const controller = {};
 
+// Finds all the recipes and renders them
 controller.findAll = (req,res) => {
     recipes.findAll(req.user.id)
         .then(data => {
@@ -15,6 +16,7 @@ controller.findAll = (req,res) => {
         });
 };
 
+// Finds a single recipe and redirects to the saved page with the spoonacular_id
 controller.findOne = (req, res) => {
     const id = req.params.id;
 
@@ -28,6 +30,7 @@ controller.findOne = (req, res) => {
         });
 };
 
+// Finds a recipe by the spoonacular id
 controller.findBySpoonacular = (req, res) => {
     const id = req.params.id;
 
@@ -41,6 +44,7 @@ controller.findBySpoonacular = (req, res) => {
         });
 }
 
+// edits the information stored with the recipe on the local server
 controller.edit = (req, res) => {
     recipes.findOne(req.cookies.recipe, req.user.id)
         .then(data => {
@@ -53,6 +57,7 @@ controller.edit = (req, res) => {
         });
 }
 
+// Finds recipes given user constraints
 controller.findByDiet = (req,res) => {
     const choices = ['vegetarian', 'vegan', 'gluten_free', 'dairy_free', 'ketogenic', 'healthy'];
     const dietPref = {};
