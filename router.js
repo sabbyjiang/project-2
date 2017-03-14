@@ -2,8 +2,10 @@ const router = require('express').Router();
 const User = require('./models/user-model');
 const passport = require('passport');
 
+// Script in order to restrict access through login sessions
 const AuthService = require('./services/auth');
 
+// Planning is a restricted url
 router.use('/planning', 
     AuthService.restrict, 
     require('./controllers/planning'));
